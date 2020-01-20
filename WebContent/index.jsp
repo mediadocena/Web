@@ -10,6 +10,9 @@
         <p align='center'>
             <a href="Controlador?accion=listado">Listado de Departamentos</a>
         </p>
+        <p align='center'>
+            <a href="Controlador?accion=modificar">Modificar Departamentos</a>
+        </p>
        
     </body>
 </html>

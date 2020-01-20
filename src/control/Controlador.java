@@ -66,6 +66,13 @@ public class Controlador extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/vista/listado.jsp");
             rd.forward(request, response);
         }
+        if(op.equals("modificar")) {
+        	ArrayList lista = depDAO.ObtenerDepartamentos();
+            request.setAttribute("departamentos", lista);
+            RequestDispatcher rd = request.getRequestDispatcher("/vista/Modificar.jsp");
+            rd.forward(request, response);
+        	
+        }
        
 
     }

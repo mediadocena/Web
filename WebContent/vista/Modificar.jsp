@@ -14,6 +14,7 @@ if(listadep!=null)
    <tr><td><%=d.getDeptno()%></td>
    <td><%=d.getDnombre()%></td>
    <td><%=d.getLoc()%></td>
+   <input/>
    </tr>
    <%}%>
 </table><br/><br/>
