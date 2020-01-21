@@ -37,7 +37,7 @@ public class Controlador extends HttpServlet {
 
         // pantalla de alta de departamento
         if (op.equals("alta")) {
-            response.sendRedirect("vista/alta.jsp");
+            response.sendRedirect("/Web/vista/alta.jsp");
         }
 
         // se inserta departamento en la tabla
@@ -108,7 +108,7 @@ public class Controlador extends HttpServlet {
 		depDAO.ModificarDep(dpto.getDeptno(), dpto);
 		String mensaje = "Departamento " + dpto.getDeptno() + " modificado";
 		request.setAttribute("mensaje", mensaje);
-		RequestDispatcher rd = request.getRequestDispatcher("/vista/DepartamentoInsertado.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/vista/DepModificado.jsp");
 		rd.forward(request, response);
 	}
     private void showEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {

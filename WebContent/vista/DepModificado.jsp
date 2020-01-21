@@ -1,18 +1,18 @@
 <html>
     <head>        
-        <title>INSERCI&Oacute;N DE DEPARTAMENTOS</title>
+        <title>MODIFICACION DE DEPARTAMENTOS</title>
     </head>
     <body>
         <br>
-        <h1 align="center">INSERCI&Oacute;N DE DEPARTAMENTO</h1>
+        <h1 align="center">MODIFICACION DE DEPARTAMENTO</h1>
         <%
             String mensaje = (String) request.getAttribute("mensaje");
         %>
         <p align="center"><font color="red">
                 <%=mensaje%></font></p>
         <p align='center'>
-            <a href="Controlador?accion=alta">Alta de Departamento</a></p>  
+            <a href="Controlador?accion=modificar">Modificacion de departamento</a></p>  
     <p align="center">
-        <a href="../index.jsp">Inicio</a></p>
+        <a href="index.jsp">Inicio</a> </p>
 </body>
 </html>
