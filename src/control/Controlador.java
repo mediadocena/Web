@@ -6,7 +6,7 @@
 package control;
 
 import java.io.IOException;
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,9 +27,9 @@ import Dep.DepartamentoDAO;
 @WebServlet("/")
 public class Controlador extends HttpServlet {    
        DAOFactory bd = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-
+       DepartamentoDAO depDAO = bd.getDepartamentoDAO();
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DepartamentoDAO depDAO = bd.getDepartamentoDAO();
+        
      
         // se obtiene la acción a realizar
         String op = request.getParameter("accion");
@@ -59,6 +59,14 @@ public class Controlador extends HttpServlet {
             rd.forward(request, response);
 
         }
+        
+        if(op.equals("eliminar")) {
+        	//obtener datos del formulario
+        	depDAO.EliminarDep(Integer.parseInt(request.getParameter("id")));
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+    		dispatcher.forward(request, response);
+        	
+        }
         // se obtienen los datos de los departamentos para visualizarlos
         if (op.equals("listado")) {
             ArrayList lista = depDAO.ObtenerDepartamentos();
@@ -73,9 +81,43 @@ public class Controlador extends HttpServlet {
             rd.forward(request, response);
         	
         }
+        if(op.equals("modificacion")) {
+        	try {
+				showEditar(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
+        }
+        if (op.equals("Modific")) {
+        	try {
+				editar(request,response);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+        }
        
 
     }
+    private void editar(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException{
+		Departamento dpto = new Departamento(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("localidad"));
+		System.out.println(dpto.getLoc());
+		depDAO.ModificarDep(dpto.getDeptno(), dpto);
+		String mensaje = "Departamento " + dpto.getDeptno() + " modificado";
+		request.setAttribute("mensaje", mensaje);
+		RequestDispatcher rd = request.getRequestDispatcher("/vista/DepartamentoInsertado.jsp");
+		rd.forward(request, response);
+	}
+    private void showEditar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		Departamento dpto = depDAO.ConsultarDep(Integer.parseInt(request.getParameter("id")));
+		request.setAttribute("dpto", dpto);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/vista/Modificacion.jsp");
+		dispatcher.forward(request, response);
+	}
    
      public void destroy() {            
             bd = null;

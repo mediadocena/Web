@@ -30,6 +30,7 @@ public class Departamentos {
 	public void setDnombre(String dnombre) {this.dnombre = dnombre;}
 	public String getLoc() {return this.loc;}
 	public void setLoc(String loc) {this.loc = loc;	}
+	
 	public String getModificar() {
 		return modificar;
 	}

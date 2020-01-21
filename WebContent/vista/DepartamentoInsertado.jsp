@@ -11,8 +11,8 @@
         <p align="center"><font color="red">
                 <%=mensaje%></font></p>
         <p align='center'>
-            <a href="/WebApplication2/Controlador?accion=alta">Alta de Departamento</a></p>  
+            <a href="Controlador?accion=alta">Alta de Departamento</a></p>  
     <p align="center">
-        <a href="index.html">Inicio</a> </p>
+        <a href="index.jsp">Inicio</a> </p>
 </body>
 </html>
