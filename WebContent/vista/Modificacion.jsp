@@ -13,7 +13,7 @@
 		<table>
 			<tr>
 				<td><label>Id</label></td>
-				<td><input type="text" name="id" value="<c:out value="${dpto.deptno}"></c:out>" ></td>
+				<td><input readonly="readonly" type="text" name="id" value="<c:out value="${dpto.deptno}"></c:out>" ></td>
 			</tr>
 			<tr>
 				<td><label>Nombre</label></td>
